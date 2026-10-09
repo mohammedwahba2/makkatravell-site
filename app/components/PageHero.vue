@@ -13,7 +13,7 @@ defineProps<{ eyebrow?: string; title: string; sub?: string; crumbs?: { name: st
         <template v-for="c in crumbs" :key="c.name"><span class="i-lucide-chevron-left text-xs opacity-60" /><NuxtLink v-if="c.to" :to="c.to" class="hover:text-white">{{ c.name }}</NuxtLink><span v-else class="text-white/90" aria-current="page">{{ c.name }}</span></template>
       </nav>
       <!-- <p v-if="eyebrow" class="eyebrow !text-brand-300"><span class="h-px w-8 bg-current opacity-60" />{{ eyebrow }}</p> -->
-      <h1 class="h-display mt-3 max-w-3xl !text-white text-[40px] sm:text-[58px]">{{ title }}</h1>
+      <h1 class="h-display max-w-3xl !text-white text-[40px] sm:text-[58px]">{{ title }}</h1>
       <p v-if="sub" class="mt-5 max-w-2xl text-[18px] leading-8 text-brand-200">{{ sub }}</p>
       <div class="mt-8 empty:hidden"><slot /></div>
     </div>

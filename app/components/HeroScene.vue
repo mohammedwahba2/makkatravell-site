@@ -2,7 +2,8 @@
 // Illustrated Haram scene inside a pointed arch. Pure SVG: no raster images, loads instantly.
 const stars = Array.from({ length: 34 }, (_, i) => {
   const r = (n: number) => { const x = Math.sin(i * 91.7 + n * 13.3) * 10000; return x - Math.floor(x) }
-  return { x: 20 + r(1) * 440, y: 18 + r(2) * 250, r: 0.6 + r(3) * 1.5, d: r(4) * 3 }
+  const f = (n: number) => Math.round(n * 100) / 100 // fixed precision: identical output on server and client (no hydration mismatch)
+  return { x: f(20 + r(1) * 440), y: f(18 + r(2) * 250), r: f(0.6 + r(3) * 1.5), d: f(r(4) * 3) }
 })
 const root = ref<SVGSVGElement>()
 onMounted(() => {

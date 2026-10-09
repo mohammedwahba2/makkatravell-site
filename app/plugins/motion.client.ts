@@ -50,7 +50,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     setup() // first page
-    console.info('[motion] triggers:', ScrollTrigger.getAll().length, 'rv:', document.querySelectorAll('.rv:not(.rv-done)').length)
     clearTimeout(fallback)
     nuxtApp.hook('page:finish', () => { lenis.scrollTo(0, { immediate: true }); requestAnimationFrame(() => requestAnimationFrame(setup)) })
   })
