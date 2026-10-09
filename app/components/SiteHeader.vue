@@ -33,7 +33,7 @@ const active = (to: string) => (to === '/' ? route.path === '/' : route.path.sta
         <img src="/logo-sm.webp" alt="" width="46" height="46" fetchpriority="high" decoding="async" class="h-11 w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,.25)]" />
         <span class="leading-tight">
           <span class="block font-display text-[21px] font-semibold transition-colors" :class="light ? 'text-white' : 'text-brand-900'">مكة للسياحة</span>
-          <span class="block text-[11px] font-semibold tracking-[.2em] transition-colors" :class="light ? 'text-brand-300' : 'text-brand-500'">MAKKA TRAVEL · دمياط</span>
+          <span class="block text-[11px] font-semibold tracking-[.2em] transition-colors" :class="light ? 'text-brand-300' : 'text-brand-500'">MAKKA TRAVEL</span>
         </span>
       </NuxtLink>
 
