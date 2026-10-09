@@ -5,7 +5,7 @@ const left = computed(() => (next.value ? next.value.seatsTotal - next.value.sea
 const stars = computed(() => Math.max(0, Math.min(5, props.pkg.hotelStars || 0)))
 </script>
 <template>
-  <article class="group relative flex h-full flex-col overflow-hidden rounded-[22px] bg-white shadow-[0_1px_2px_rgb(59_36_24/.05),0_18px_40px_-24px_rgb(59_36_24/.28)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-26px_rgb(59_36_24/.4)]">
+  <article class="group relative flex h-full flex-col overflow-hidden rounded-[22px] bg-white  transition-all duration-500 hover:-translate-y-1.5">
     <NuxtLink :to="`/packages/${pkg.slug}`" class="relative block aspect-[4/3] overflow-hidden" :aria-label="pkg.title">
       <img v-if="pkg.coverImage" :src="pkg.coverImage" :alt="pkg.title" loading="lazy" decoding="async" width="800" height="600" class="size-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]" />
       <CoverArt v-else :seed="pkg.slug" :kind="pkg.type" class="transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]" />
