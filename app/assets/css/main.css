@@ -18,6 +18,7 @@ html.lenis, html.lenis body { height: auto; }
 html.js .rv { opacity: 0; transform: translate3d(0, 34px, 0); }
 html.js .rv-x { opacity: 0; transform: translate3d(-40px, 0, 0); }
 html.js .rv-s { opacity: 0; transform: scale(.94); }
+html.js .rv.rv-done, html.js .rv-x.rv-done, html.js .rv-s.rv-done { opacity: 1; transform: none; }
 html.rv-fallback .rv, html.rv-fallback .rv-x, html.rv-fallback .rv-s { opacity: 1 !important; transform: none !important; }
 
 /* ---- page transitions ---- */

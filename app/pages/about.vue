@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { site } = useSite()
-usePageSeo({ title: 'من نحن | مكة للسياحة دمياط', description: 'مكة للسياحة شركة سياحة بدمياط متخصصة في برامج العمرة والحج والسياحة الدينية. تعرف على رؤيتنا وقيمنا وكيف نخدم ضيوف الرحمن.', breadcrumbs: [{ name: 'من نحن', path: '/about' }] })
+usePageSeo({ title: 'من نحن | مكة للسياحة', description: 'مكة للسياحة شركة سياحة بدمياط متخصصة في برامج العمرة والحج والسياحة الدينية. تعرف على رؤيتنا وقيمنا وكيف نخدم ضيوف الرحمن.', breadcrumbs: [{ name: 'من نحن', path: '/about' }] })
 const values = [
   { i: 'i-lucide-handshake', t: 'الأمانة', d: 'نلتزم بما نعد به: ما يشمله البرنامج مكتوب بوضوح، وما نتفق عليه نفي به.' },
   { i: 'i-lucide-heart-handshake', t: 'الخدمة بإحسان', d: 'نتعامل مع كل معتمر كضيف، ونحرص على راحته وراحة أسرته في كل خطوة.' },
@@ -10,7 +10,7 @@ const values = [
 </script>
 <template>
   <div>
-    <PageHero eyebrow="من نحن" title="نخدم ضيوف الرحمن من قلب دمياط" sub="مكة للسياحة شركة سياحة متخصصة في العمرة والحج والسياحة الدينية." :crumbs="[{ name: 'من نحن' }]" />
+    <PageHero eyebrow="من نحن" title="نخدم ضيوف الرحمن من قلب" sub="مكة للسياحة شركة سياحة متخصصة في العمرة والحج والسياحة الدينية." :crumbs="[{ name: 'من نحن' }]" />
     <section class="wrap py-16 sm:py-24">
       <div class="grid items-center gap-14 lg:grid-cols-2">
         <div class="rv relative mx-auto aspect-[480/620] w-full max-w-[400px] drop-shadow-[0_30px_60px_rgba(59,36,24,.35)]"><HeroScene /></div>

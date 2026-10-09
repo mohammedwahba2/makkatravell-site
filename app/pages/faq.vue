@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const api = useApi()
 const { data: faqs } = await useAsyncData('faqs-all', () => api<any[]>('/faqs').catch(() => [] as any[]), { default: () => [] as any[] })
-usePageSeo(() => ({ title: 'الأسئلة الشائعة عن العمرة والحج والحجز', description: 'إجابات عن أكثر الأسئلة شيوعًا حول الحجز والمستندات والدفع والإلغاء وبرامج العمرة والحج مع مكة للسياحة بدمياط.', breadcrumbs: [{ name: 'الأسئلة الشائعة', path: '/faq' }], jsonLd: faqs.value.length ? [faqSchema(faqs.value)] : [] }))
+usePageSeo(() => ({ title: 'الأسئلة الشائعة عن العمرة والحج والحجز', description: 'إجابات عن أكثر الأسئلة شيوعًا حول الحجز والمستندات والدفع والإلغاء وبرامج العمرة والحج مع مكة للسياحة.', breadcrumbs: [{ name: 'الأسئلة الشائعة', path: '/faq' }], jsonLd: faqs.value.length ? [faqSchema(faqs.value)] : [] }))
 </script>
 <template>
   <div>

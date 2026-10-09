@@ -21,9 +21,16 @@ export default defineNuxtPlugin((nuxtApp) => {
     const setup = () => {
       ScrollTrigger.getAll().forEach((t) => t.kill())
       for (const sel of ['.rv', '.rv-x', '.rv-s']) {
-        ScrollTrigger.batch(sel, {
+        ScrollTrigger.batch(`${sel}:not(.rv-done)`, {
           start: 'top 92%', once: true, interval: 0.08, batchMax: 6,
-          onEnter: (els) => gsap.to(els, { opacity: 1, x: 0, y: 0, scale: 1, duration: 1.05, ease: 'power3.out', stagger: 0.09, overwrite: true, clearProps: 'transform' }),
+          onEnter: (els) => {
+            gsap.to(els, {
+              opacity: 1, x: 0, y: 0, scale: 1, duration: 1.05, ease: 'power3.out', stagger: 0.09, overwrite: true,
+              // mark as finished BEFORE the inline styles are cleared, so the CSS "final state" rule (.rv-done) takes over
+              // with no jump. (Clearing the transform while only the hidden-state rule existed made elements drop 34px.)
+              onComplete: () => els.forEach((e) => { e.classList.add('rv-done'); (e as HTMLElement).style.removeProperty('transform'); (e as HTMLElement).style.removeProperty('opacity') }),
+            })
+          },
         })
       }
       gsap.utils.toArray<HTMLElement>('[data-parallax]').forEach((el) => {
@@ -43,6 +50,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     setup() // first page
+    console.info('[motion] triggers:', ScrollTrigger.getAll().length, 'rv:', document.querySelectorAll('.rv:not(.rv-done)').length)
     clearTimeout(fallback)
     nuxtApp.hook('page:finish', () => { lenis.scrollTo(0, { immediate: true }); requestAnimationFrame(() => requestAnimationFrame(setup)) })
   })

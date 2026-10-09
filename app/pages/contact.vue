@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const api = useApi()
 const { site, phoneDisplay, tel, wa } = useSite()
-usePageSeo({ title: 'اتصل بنا | عنوان وهاتف مكة للسياحة بدمياط', description: 'تواصل مع مكة للسياحة: دمياط، طريق المحور، تقسيم المعلمين، أعلى معارض النماس للموبيليات، الدور الأول. هاتف وواتساب وفيسبوك وإنستجرام وتيك توك.', breadcrumbs: [{ name: 'اتصل بنا', path: '/contact' }] })
+usePageSeo({ title: 'اتصل بنا | عنوان وهاتف مكة للسياحة', description: 'تواصل مع مكة للسياحة: دمياط، طريق المحور، تقسيم المعلمين، أعلى معارض النماس للموبيليات، الدور الأول. هاتف وواتساب وفيسبوك وإنستجرام وتيك توك.', breadcrumbs: [{ name: 'اتصل بنا', path: '/contact' }] })
 const f = reactive({ name: '', phone: '', subject: '', message: '', website: '' })
 const errors = reactive<Record<string, string>>({})
 const busy = ref(false)
@@ -19,12 +19,12 @@ async function submit() {
   catch (e) { apiError.value = errMsg(e) } finally { busy.value = false }
 }
 const map = computed(() => `https://www.google.com/maps?q=${encodeURIComponent(`مكة للسياحة، ${site.value.address}`)}&hl=ar&z=16&output=embed`)
-const mapLink = computed(() => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`مكة للسياحة دمياط ${site.value.address}`)}`)
+const mapLink = computed(() => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`مكة للسياحة ${site.value.address}`)}`)
 const socials = computed(() => [['facebook', 'i-simple-icons-facebook', 'فيسبوك'], ['instagram', 'i-simple-icons-instagram', 'إنستجرام'], ['tiktok', 'i-simple-icons-tiktok', 'تيك توك'], ['youtube', 'i-simple-icons-youtube', 'يوتيوب']].filter((s) => (site.value.social as any)[s[0]!]).map((s) => ({ href: (site.value.social as any)[s[0]!], icon: s[1]!, label: s[2]! })))
 </script>
 <template>
   <div>
-    <PageHero eyebrow="اتصل بنا" title="يسعدنا سماعك" sub="اتصل أو راسلنا على واتساب أو زر مكتبنا في دمياط." :crumbs="[{ name: 'اتصل بنا' }]" />
+    <PageHero eyebrow="اتصل بنا" title="يسعدنا سماعك" sub="اتصل أو راسلنا على واتساب أو زر مكتبنا في." :crumbs="[{ name: 'اتصل بنا' }]" />
     <section class="wrap py-16 sm:py-24">
       <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
         <div class="space-y-4">
