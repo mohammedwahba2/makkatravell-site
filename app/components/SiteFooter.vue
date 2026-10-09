@@ -39,7 +39,7 @@ const year = new Date().getFullYear()
     <div class="border-t border-white/10">
       <div class="wrap flex flex-col items-center justify-between gap-3 py-6 text-[13px] text-brand-300 sm:flex-row">
         <p>© <span class="num">{{ year }}</span> مكة للسياحة — دمياط. جميع الحقوق محفوظة.</p>
-        <div class="flex gap-5"><NuxtLink to="/privacy" class="hover:text-white">سياسة الخصوصية</NuxtLink><NuxtLink to="/terms" class="hover:text-white">الشروط والأحكام</NuxtLink></div>
+        <div class="flex flex-wrap justify-center gap-x-5 gap-y-2"><NuxtLink to="/privacy" class="hover:text-white">سياسة الخصوصية</NuxtLink><NuxtLink to="/terms" class="hover:text-white">الشروط والأحكام</NuxtLink><NuxtLink to="/refund" class="hover:text-white">الإلغاء والاسترداد</NuxtLink></div>
       </div>
     </div>
   </footer>

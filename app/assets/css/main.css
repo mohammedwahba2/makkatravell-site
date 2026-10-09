@@ -58,3 +58,10 @@ html.rv-fallback .rv, html.rv-fallback .rv-x, html.rv-fallback .rv-s { opacity: 
 .hero-search { animation: intro-up 1s cubic-bezier(.2,.8,.2,1) .65s both; }
 .hero-scene { animation: intro-scene 1.3s cubic-bezier(.16,1,.3,1) .1s both; }
 .hero-chip { animation: intro-pop .8s cubic-bezier(.34,1.56,.64,1) 1s both; }
+
+/* ---- flat design: no shadows anywhere (box-shadow, drop-shadow, text-shadow) ----
+   Only the shadow variables are zeroed, so rings/outlines (e.g. focus rings) keep working. */
+*, *::before, *::after { --un-shadow: 0 0 #0000 !important; --un-inset-shadow: 0 0 #0000 !important; --un-drop-shadow: initial !important; text-shadow: none !important; }
+[class*="drop-shadow"] { filter: none !important; }
+/* white cards used to rely on a shadow to separate from the cream page: give them a hairline instead */
+.bg-white[class*="shadow-["] { border: 1px solid rgb(232 220 203 / .9); }
