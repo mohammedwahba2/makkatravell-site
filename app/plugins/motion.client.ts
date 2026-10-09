@@ -47,7 +47,30 @@ export default defineNuxtPlugin((nuxtApp) => {
         })
       }
       ScrollTrigger.refresh()
+      safetyNet()
     }
+
+    // Safety net (iOS): trigger positions go stale when images/fonts/URL-bar change the layout, which left big blank gaps.
+    // Anything that is on screen (or already scrolled past) and still hidden after the animation window gets revealed directly.
+    let io: IntersectionObserver | null = null
+    const safetyNet = () => {
+      io?.disconnect()
+      io = new IntersectionObserver((entries) => {
+        for (const en of entries) {
+          const el = en.target as HTMLElement
+          if (el.classList.contains('rv-done')) { io?.unobserve(el); continue }
+          if (en.isIntersecting || en.boundingClientRect.top < 0) {
+            setTimeout(() => { el.classList.add('rv-done'); io?.unobserve(el) }, 1600)
+          }
+        }
+      }, { rootMargin: '0px 0px 10% 0px' })
+      document.querySelectorAll<HTMLElement>('.rv:not(.rv-done), .rv-x:not(.rv-done), .rv-s:not(.rv-done)').forEach((e) => io!.observe(e))
+    }
+    let rf: ReturnType<typeof setTimeout>
+    const refreshSoon = () => { clearTimeout(rf); rf = setTimeout(() => { ScrollTrigger.refresh(); safetyNet() }, 250) }
+    window.addEventListener('load', refreshSoon)
+    document.fonts?.ready.then(refreshSoon)
+    new ResizeObserver(refreshSoon).observe(document.body)
 
     setup() // first page
     clearTimeout(fallback)
