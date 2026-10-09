@@ -4,12 +4,13 @@ const abs = (siteUrl: string, p?: string | null) => (!p ? undefined : /^https?:/
 
 export const orgSchema = (s: SiteSettings, siteUrl: string): Json => ({
   '@context': 'https://schema.org',
-  '@type': ['TravelAgency', 'LocalBusiness'],
+  '@type': ['Organization', 'TravelAgency', 'LocalBusiness'],
   '@id': `${siteUrl}/#organization`,
   name: s.name, alternateName: 'Makka Travel', url: siteUrl, slogan: s.tagline,
   description: 'شركة مكة للسياحة بدمياط: برامج عمرة وحج وسياحة دينية بإشراف ديني وخدمة متكاملة من القاهرة وجميع المحافظات.',
   logo: { '@type': 'ImageObject', url: `${siteUrl}/logo-transparent.png`, width: 512, height: 512 },
-  image: `${siteUrl}/og-default.png`,
+  image: `${siteUrl}/og-default.jpg`,
+  founder: { '@type': 'Person', name: 'أيمن النماس' },
   telephone: s.phone, ...(s.email ? { email: s.email } : {}),
   address: { '@type': 'PostalAddress', streetAddress: s.address, addressLocality: s.city, addressRegion: 'دمياط', addressCountry: 'EG' },
   areaServed: { '@type': 'Country', name: 'مصر' },
@@ -43,7 +44,7 @@ export const packageSchema = (p: any, siteUrl: string): Json => {
   return {
     '@context': 'https://schema.org', '@type': ['Product', 'TouristTrip'], '@id': `${url}#trip`,
     name: p.title, description: p.summary, sku: p.slug, url,
-    image: images.length ? images : [`${siteUrl}/og-default.png`],
+    image: images.length ? images : [`${siteUrl}/og-default.jpg`],
     category: PACKAGE_TYPES[p.type] ?? 'رحلة',
     brand: { '@type': 'Brand', name: 'مكة للسياحة' },
     provider: { '@id': `${siteUrl}/#organization` },
@@ -59,7 +60,7 @@ export const packageSchema = (p: any, siteUrl: string): Json => {
 
 export const articleSchema = (a: any, siteUrl: string): Json => ({
   '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.excerpt, inLanguage: 'ar',
-  image: [abs(siteUrl, a.coverImage) ?? `${siteUrl}/og-default.png`],
+  image: [abs(siteUrl, a.coverImage) ?? `${siteUrl}/og-default.jpg`],
   datePublished: a.publishedAt, dateModified: a.updatedAt || a.publishedAt,
   mainEntityOfPage: `${siteUrl}/blog/${a.slug}`,
   author: { '@id': `${siteUrl}/#organization` }, publisher: { '@id': `${siteUrl}/#organization` },

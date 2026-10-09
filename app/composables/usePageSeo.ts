@@ -13,7 +13,7 @@ export const usePageSeo = (input: SeoInput | (() => SeoInput)) => {
   const BRAND = 'مكة للسياحة'
   const hasBrand = (t: string) => t.includes(BRAND)
 
-  const abs = (p?: string | null) => (!p ? `${siteUrl}/og-default.png` : /^https?:/.test(p) ? p : `${siteUrl}${p}`)
+  const abs = (p?: string | null) => (!p ? `${siteUrl}/og-default.jpg` : /^https?:/.test(p) ? p : `${siteUrl}${p}`)
   const canonical = computed(() => `${siteUrl}${route.path === '/' ? '' : route.path.replace(/\/$/, '')}` || siteUrl)
 
   useSeoMeta({
@@ -25,6 +25,8 @@ export const usePageSeo = (input: SeoInput | (() => SeoInput)) => {
     ogUrl: () => canonical.value,
     ogImage: () => abs(get().image),
     ogImageAlt: () => get().title,
+    ogImageWidth: () => (get().image ? undefined : 1200),
+    ogImageHeight: () => (get().image ? undefined : 630),
     twitterCard: 'summary_large_image',
     twitterTitle: () => get().title,
     twitterDescription: () => get().description,

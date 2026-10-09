@@ -16,7 +16,7 @@ const year = new Date().getFullYear()
     <div class="pointer-events-none absolute inset-x-0 top-0 hairline" />
     <div class="wrap relative grid grid-cols-2 gap-x-6 gap-y-12 pb-28 pt-16 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr] lg:gap-12 lg:pb-16 lg:pt-20">
       <div class="col-span-2 lg:col-span-1">
-        <NuxtLink to="/" class="flex items-center gap-3"><img src="/logo-sm.webp" alt="" width="56" height="56" class="h-14 w-auto" loading="lazy" /><span class="font-display text-[26px] text-white">مكة للسياحة</span></NuxtLink>
+        <NuxtLink to="/" class="flex items-center gap-3"><img src="/logo-sm.webp" alt="شعار مكة للسياحة" width="56" height="56" class="h-14 w-auto" loading="lazy" /><span class="font-display text-[26px] text-white">مكة للسياحة</span></NuxtLink>
         <p class="mt-5 max-w-sm font-display text-[22px] leading-[1.6] text-brand-300">{{ site.tagline }}</p>
         <div class="mt-7 flex gap-2.5">
           <a v-for="s in socials" :key="s.k" :href="s.href" target="_blank" rel="noopener noreferrer me" :aria-label="s.label" class="grid size-11 place-items-center rounded-full border border-white/15 text-brand-100 transition hover:border-brand-400 hover:bg-brand-400 hover:text-brand-950"><span :class="s.icon" class="text-lg" /></a>

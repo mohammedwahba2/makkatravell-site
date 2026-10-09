@@ -51,7 +51,7 @@ usePageSeo(() => ({
 <template>
   <div v-if="p">
     <section class="relative overflow-hidden bg-brand-950 pb-14 pt-[130px] text-white sm:pt-[150px]">
-      <div class="absolute inset-0 opacity-90"><img v-if="p.coverImage" :src="p.coverImage" alt="" class="size-full object-cover" fetchpriority="high" /><CoverArt v-else :seed="p.slug" :kind="p.type" /></div>
+      <div class="absolute inset-0 opacity-90"><img v-if="p.coverImage" :src="p.coverImage" :alt="p.title" class="size-full object-cover" fetchpriority="high" /><CoverArt v-else :seed="p.slug" :kind="p.type" /></div>
       <div class="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/70 to-brand-950/40" />
       <div class="wrap relative">
         <nav aria-label="مسار التنقل" class="mb-6 flex flex-wrap items-center gap-2 text-[13px] text-brand-200"><NuxtLink to="/" class="hover:text-white">الرئيسية</NuxtLink><span class="i-lucide-chevron-left text-xs opacity-60" /><NuxtLink to="/packages" class="hover:text-white">البرامج</NuxtLink><span class="i-lucide-chevron-left text-xs opacity-60" /><span class="text-white" aria-current="page">{{ p.title }}</span></nav>
