@@ -30,7 +30,7 @@ const active = (to: string) => (to === '/' ? route.path === '/' : route.path.sta
   <header class="fixed inset-x-0 top-0 z-50 transition-all duration-500" :class="[hidden ? '-translate-y-full' : 'translate-y-0', light ? 'bg-transparent' : 'bg-brand-50/90 shadow-[0_1px_0_rgb(232_220_203/.9)] backdrop-blur-xl']">
     <div class="wrap flex h-[76px] items-center justify-between gap-6">
       <NuxtLink to="/" class="flex items-center gap-3" aria-label="مكة للسياحة — الرئيسية">
-        <img src="/logo-sm.webp" alt="" width="46" height="46" class="h-11 w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,.25)]" />
+        <img src="/logo-sm.webp" alt="" width="46" height="46" fetchpriority="high" decoding="async" class="h-11 w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,.25)]" />
         <span class="leading-tight">
           <span class="block font-display text-[21px] font-semibold transition-colors" :class="light ? 'text-white' : 'text-brand-900'">مكة للسياحة</span>
           <span class="block text-[11px] font-semibold tracking-[.2em] transition-colors" :class="light ? 'text-brand-300' : 'text-brand-500'">MAKKA TRAVEL · دمياط</span>
