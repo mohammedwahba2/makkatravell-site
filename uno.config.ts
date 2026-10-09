@@ -4,7 +4,7 @@ export default defineConfig({
   presets: [presetWind4(), presetIcons({ scale: 1.15, extraProperties: { display: 'inline-block', 'vertical-align': 'middle', 'flex-shrink': '0' } })],
   transformers: [transformerDirectives()],
   theme: {
-    font: { sans: "'Cairo', system-ui, sans-serif", display: "'Reem Kufi', 'Cairo', sans-serif", num: "'Space Grotesk', 'Cairo', sans-serif" },
+    font: { sans: "'IBM Plex Sans Arabic', system-ui, sans-serif", display: "'El Messiri', 'IBM Plex Sans Arabic', sans-serif", num: "'IBM Plex Sans Arabic', system-ui, sans-serif" },
     colors: {
       brand: { 50: '#FBF8F3', 100: '#F5EFE7', 200: '#E8DCCB', 300: '#D9B79A', 400: '#C98F68', 500: '#A56F4D', 600: '#85573B', 700: '#5C3A28', 800: '#472C1F', 900: '#3B2418', 950: '#241811' },
       gold: { 300: '#EBCB84', 400: '#D4A24C', 500: '#BE8A33' },

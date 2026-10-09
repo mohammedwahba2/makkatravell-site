@@ -28,8 +28,8 @@ usePageSeo(() => ({
 </template>
 <style>
 .prose-ar { font-size: 18px; line-height: 2.05; color: #3B2418; }
-.prose-ar h2 { font-family: 'Reem Kufi', 'Cairo', sans-serif; font-size: 32px; line-height: 1.35; margin: 2.2em 0 .6em; color: #241811; }
-.prose-ar h3 { font-family: 'Reem Kufi', 'Cairo', sans-serif; font-size: 25px; margin: 1.8em 0 .5em; color: #241811; }
+.prose-ar h2 { font-family: 'El Messiri', 'IBM Plex Sans Arabic', sans-serif; font-size: 32px; line-height: 1.35; margin: 2.2em 0 .6em; color: #241811; }
+.prose-ar h3 { font-family: 'El Messiri', 'IBM Plex Sans Arabic', sans-serif; font-size: 25px; margin: 1.8em 0 .5em; color: #241811; }
 .prose-ar p { margin: 0 0 1.2em; }
 .prose-ar ul { margin: 0 0 1.4em; padding: 0; list-style: none; }
 .prose-ar li { position: relative; padding-inline-start: 1.7em; margin-bottom: .5em; }

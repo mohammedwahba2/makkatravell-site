@@ -24,7 +24,7 @@ usePageSeo(() => ({
   rawTitle: true,
   title: 'مكة للسياحة دمياط | برامج عمرة وحج بإشراف ديني وأفضل الأسعار',
   description: 'احجز رحلة عمرتك أو حجك مع مكة للسياحة بدمياط: برامج متنوعة من القاهرة وجميع المحافظات، إقامة بجوار الحرم، تأشيرة وطيران ومرشد ديني. ركّز في عمرتك واترك لنا شرف خدمتك.',
-  jsonLd: data.value.faqs.length ? [faqSchema(data.value.faqs.slice(0, 8))] : [],
+  jsonLd: data.value.faqs.length ? [faqSchema(data.value.faqs.slice(0, 5))] : [],
 }))
 
 // quick search
@@ -77,12 +77,12 @@ onMounted(async () => {
       <div class="wrap grid items-center gap-10 pb-24 pt-[128px] lg:min-h-[100svh] lg:grid-cols-[1.08fr_.92fr] lg:gap-6 lg:pb-28 lg:pt-[110px]">
         <div>
           <p class="hero-eyebrow eyebrow !text-brand-300"><span class="h-px w-10 bg-current opacity-60" />مكة للسياحة · دمياط</p>
-          <h1 class="mt-5 font-display text-[40px] font-semibold leading-[1.28] sm:text-[52px] lg:text-[54px] xl:text-[58px]">
+          <h1 class="mt-5 font-display text-[40px] font-semibold leading-[1.28] sm:text-[56px] lg:text-[60px] xl:text-[68px]">
             <span class="block overflow-hidden py-1"><span class="hero-line block">ركّز في عمرتك،</span></span>
             <span class="block overflow-hidden py-1"><span class="hero-line block bg-gradient-to-l from-gold-300 via-brand-300 to-brand-400 bg-clip-text text-transparent">واترك لنا شرف خدمتك.</span></span>
           </h1>
           <p class="hero-sub mt-6 max-w-xl text-[18px] leading-9 text-brand-200 sm:text-[19px]">برامج عمرة وحج من القاهرة وجميع المحافظات، بإشراف ديني وإقامة مختارة قريبة من الحرم، وتأشيرة وطيران ومواصلات في رحلة واحدة منظّمة.</p>
-          <div class="hero-cta mt-9 flex flex-wrap gap-3">
+          <div class="hero-cta mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>*]:w-full sm:[&>*]:w-auto">
             <NuxtLink to="/umrah" class="btn-copper" data-magnetic>تصفح برامج العمرة<span class="i-lucide-arrow-left text-lg" /></NuxtLink>
             <a :href="wa()" target="_blank" rel="noopener" class="btn-line-light" data-magnetic><span class="i-lucide-message-circle text-lg" />اسأل عبر واتساب</a>
           </div>

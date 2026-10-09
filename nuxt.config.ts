@@ -7,12 +7,12 @@ export default defineNuxtConfig({
   modules: ['@unocss/nuxt', '@nuxt/fonts', '@nuxtjs/sitemap', '@nuxtjs/robots'],
   css: ['~/assets/css/main.css'],
 
-  site: { url: 'https://makkatravell.com', name: 'مكة للسياحة', defaultLocale: 'ar' },
+  site: { url: 'https://www.makkatravell.com', name: 'مكة للسياحة', defaultLocale: 'ar' },
 
   runtimeConfig: {
     public: {
       apiBase: 'https://api.makkatravell.com/api',
-      siteUrl: 'https://makkatravell.com',
+      siteUrl: 'https://www.makkatravell.com',
       gaId: '',
       googleVerification: '',
       bingVerification: '',
@@ -21,9 +21,8 @@ export default defineNuxtConfig({
 
   fonts: {
     families: [
-      { name: 'Cairo', provider: 'google', weights: [400, 500, 600, 700, 800], styles: ['normal'], subsets: ['arabic', 'latin'] },
-      { name: 'Reem Kufi', provider: 'google', weights: [500, 600, 700], styles: ['normal'], subsets: ['arabic', 'latin'] },
-      { name: 'Space Grotesk', provider: 'google', weights: [500, 600, 700], styles: ['normal'], subsets: ['latin'] },
+      { name: 'IBM Plex Sans Arabic', provider: 'google', weights: [400, 500, 600, 700], styles: ['normal'], subsets: ['arabic', 'latin'] },
+      { name: 'El Messiri', provider: 'google', weights: [500, 600, 700], styles: ['normal'], subsets: ['arabic', 'latin'] },
     ],
   },
 

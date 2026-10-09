@@ -10,6 +10,8 @@ export const usePageSeo = (input: SeoInput | (() => SeoInput)) => {
   const siteUrl = (cfg.siteUrl as string).replace(/\/$/, '')
   const { site } = useSite()
   const get = () => (typeof input === 'function' ? input() : input)
+  const BRAND = 'مكة للسياحة'
+  const hasBrand = (t: string) => t.includes(BRAND)
 
   const abs = (p?: string | null) => (!p ? `${siteUrl}/og-default.png` : /^https?:/.test(p) ? p : `${siteUrl}${p}`)
   const canonical = computed(() => `${siteUrl}${route.path === '/' ? '' : route.path.replace(/\/$/, '')}` || siteUrl)
@@ -17,7 +19,7 @@ export const usePageSeo = (input: SeoInput | (() => SeoInput)) => {
   useSeoMeta({
     title: () => get().title,
     description: () => get().description,
-    ogTitle: () => `${get().title} | مكة للسياحة`,
+    ogTitle: () => (hasBrand(get().title) ? get().title : `${get().title} | ${BRAND}`),
     ogDescription: () => get().description,
     ogType: () => get().type ?? 'website',
     ogUrl: () => canonical.value,
@@ -38,7 +40,7 @@ export const usePageSeo = (input: SeoInput | (() => SeoInput)) => {
     const ld: Record<string, any>[] = [...(g.jsonLd ?? [])]
     if (g.breadcrumbs?.length) ld.push(breadcrumbSchema([{ name: 'الرئيسية', path: '/' }, ...g.breadcrumbs], siteUrl))
     return {
-      ...(g.rawTitle ? { titleTemplate: null } : {}),
+      ...(g.rawTitle || hasBrand(g.title) ? { titleTemplate: null } : {}),
       meta: cfg.bingVerification ? [{ name: 'msvalidate.01', content: cfg.bingVerification as string }] : [],
       link: [{ rel: 'canonical', href: canonical.value }],
       script: ld.map((o) => ({ type: 'application/ld+json', innerHTML: JSON.stringify(o) })),
