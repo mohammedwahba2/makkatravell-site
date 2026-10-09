@@ -1,6 +1,9 @@
 export interface SiteSettings {
   name: string; tagline: string; city: string; country: string; phone: string; whatsapp: string; email: string; address: string
   workingHours: string; social: { facebook?: string; instagram?: string; tiktok?: string; youtube?: string }
+  licenseNumber?: string; licenseAuthority?: string; responseTime?: string; paymentNote?: string
+  paymentMethods?: { label: string; details: string }[]
+  tracking?: { gaId?: string; metaPixelId?: string; tiktokPixelId?: string }
 }
 // Real contact data of the office. Overridden by the admin "Site settings" screen (API) when present.
 const DEFAULTS: SiteSettings = {

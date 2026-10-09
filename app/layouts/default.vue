@@ -5,5 +5,6 @@
     <SiteFooter />
     <MobileBar />
     <WhatsAppFab />
+    <TrackingLoader />
   </div>
 </template>

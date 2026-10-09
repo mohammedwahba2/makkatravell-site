@@ -15,6 +15,7 @@ export const orgSchema = (s: SiteSettings, siteUrl: string): Json => ({
   address: { '@type': 'PostalAddress', streetAddress: s.address, addressLocality: s.city, addressRegion: 'دمياط', addressCountry: 'EG' },
   areaServed: { '@type': 'Country', name: 'مصر' },
   knowsLanguage: 'ar',
+  ...(s.licenseNumber ? { identifier: { '@type': 'PropertyValue', name: s.licenseAuthority || 'رقم الترخيص', value: s.licenseNumber } } : {}),
   sameAs: Object.values(s.social || {}).filter(Boolean),
   contactPoint: [{ '@type': 'ContactPoint', telephone: s.phone, contactType: 'customer service', areaServed: 'EG', availableLanguage: 'Arabic' }],
 })

@@ -8,13 +8,16 @@ const error = ref('')
 const res = ref<any>(null)
 onMounted(() => { try { const s = JSON.parse(localStorage.getItem('mk_last_booking') || 'null'); if (s) { f.reference = s.reference; f.phone = s.phone } } catch { /* ignore */ } })
 
-async function submit() {
-  error.value = ''; res.value = null
+async function load(keep = false) {
+  error.value = ''; if (!keep) res.value = null
   if (!isEgMobile(f.phone)) return void (error.value = 'أدخل رقم الموبايل الذي حجزت به')
   busy.value = true
   try { res.value = await api('/bookings/track', { method: 'POST', body: { reference: f.reference.trim().toUpperCase(), phone: normalizePhone(f.phone) } }) }
   catch (e) { error.value = errMsg(e) } finally { busy.value = false }
 }
+const submit = () => load()
+const route = useRoute()
+onMounted(() => { if (route.query.r && route.query.p) { f.reference = String(route.query.r); f.phone = String(route.query.p); load() } })
 const stages = [{ k: 'PENDING', l: 'تم استلام الطلب', i: 'i-lucide-inbox' }, { k: 'CONFIRMED', l: 'تم تأكيد الحجز', i: 'i-lucide-badge-check' }, { k: 'COMPLETED', l: 'اكتملت الرحلة', i: 'i-lucide-plane-landing' }]
 const stageIdx = computed(() => (res.value ? stages.findIndex((s) => s.k === res.value.status) : -1))
 const remaining = computed(() => (res.value ? Math.max(0, Number(res.value.totalPrice) - Number(res.value.paidAmount)) : 0))
@@ -44,6 +47,7 @@ const remaining = computed(() => (res.value ? Math.max(0, Number(res.value.total
           </div>
         </div>
       </Transition>
+      <TravelersForm v-if="res && res.status !== 'CANCELLED'" :reference="res.reference" :phone="normalizePhone(f.phone)" :booking="res" @refresh="load(true)" />
     </div>
   </div>
 </template>

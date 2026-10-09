@@ -38,7 +38,7 @@ const year = new Date().getFullYear()
     </div>
     <div class="border-t border-white/10">
       <div class="wrap flex flex-col items-center justify-between gap-3 py-6 text-[13px] text-brand-300 sm:flex-row">
-        <p>© <span class="num">{{ year }}</span> مكة للسياحة — دمياط. جميع الحقوق محفوظة.</p>
+        <p>© <span class="num">{{ year }}</span> مكة للسياحة — دمياط. جميع الحقوق محفوظة.<span v-if="site.licenseNumber" class="mx-2 text-brand-400">·</span><span v-if="site.licenseNumber">{{ site.licenseAuthority || 'رقم الترخيص' }}: <b class="num text-brand-100">{{ site.licenseNumber }}</b></span></p>
         <div class="flex flex-wrap justify-center gap-x-5 gap-y-2"><NuxtLink to="/privacy" class="hover:text-white">سياسة الخصوصية</NuxtLink><NuxtLink to="/terms" class="hover:text-white">الشروط والأحكام</NuxtLink><NuxtLink to="/refund" class="hover:text-white">الإلغاء والاسترداد</NuxtLink></div>
       </div>
     </div>

@@ -21,6 +21,7 @@ const values = [
             <p>نقدم برامج متنوعة تناسب مختلف الميزانيات والأعمار، وأسرتنا في المكتب جاهزة للرد على استفساراتك وزيارتك في أي وقت، فنحن لسنا موقعًا فقط، بل مكتب حقيقي يمكنك الوصول إليه.</p>
             <p>شعارنا الذي نعمل به كل يوم: <b>«{{ site.tagline }}»</b>.</p>
           </div>
+          <p v-if="site.licenseNumber" class="rv mt-7 inline-flex items-center gap-3 rounded-2xl bg-brand-100 px-5 py-3 text-[15px] text-brand-800"><span class="i-lucide-badge-check text-2xl text-emerald-700" /><span>{{ site.licenseAuthority || 'شركة مرخّصة' }} — رقم <b class="num">{{ site.licenseNumber }}</b></span></p>
           <div class="rv mt-8 flex flex-wrap gap-3"><NuxtLink to="/packages" class="btn-dark">تصفح البرامج</NuxtLink><NuxtLink to="/contact" class="btn-line">زرنا في المكتب</NuxtLink></div>
         </div>
       </div>

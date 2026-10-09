@@ -34,6 +34,7 @@ const facts = computed(() => [
 ].filter(Boolean) as { i: string; k: string; v: string }[])
 
 const itinerary = computed<any[]>(() => p.value.itinerary ?? [])
+onMounted(() => track('view_package', { content_name: p.value.title, content_ids: [p.value.slug], content_type: 'product', value: Number(p.value.basePrice), currency: 'EGP' }))
 const openDay = ref<number | null>(0)
 const toggleDay = (i: number) => { openDay.value = openDay.value === i ? null : i }
 const lightbox = ref<string | null>(null)

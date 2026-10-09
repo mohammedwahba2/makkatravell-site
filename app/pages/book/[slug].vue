@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const api = useApi()
-const { wa } = useSite()
+const { wa, site } = useSite()
 const slug = String(route.params.slug)
 usePageSeo({ title: 'احجز برنامجك', description: 'أرسل طلب حجزك في دقيقتين وسيتواصل معك فريق مكة للسياحة لتأكيده.', noindex: true })
 
@@ -22,6 +22,7 @@ const unit = computed(() => Number(({ DOUBLE: dep.value?.priceDouble, TRIPLE: de
 const total = computed(() => unit.value * f.adults + unit.value * 0.75 * f.children)
 const left = computed(() => (dep.value ? dep.value.seatsTotal - dep.value.seatsTaken : 99))
 
+onMounted(() => track('booking_start', { content_name: p.value.title, value: total.value, currency: 'EGP' }))
 const step = ref(1)
 const errors = reactive<Record<string, string>>({})
 const busy = ref(false)
@@ -56,6 +57,7 @@ async function submit() {
       adults: f.adults, children: f.children, roomType: f.roomType, ...(f.notes.trim() ? { notes: f.notes.trim() } : {}),
     } })
     done.value = r
+    track('booking_submit', { content_name: p.value.title, value: Number(r.totalPrice), currency: 'EGP' })
     try { localStorage.setItem('mk_last_booking', JSON.stringify({ reference: r.reference, phone: normalizePhone(f.phone) })) } catch { /* private mode */ }
     window.scrollTo({ top: 0 })
   } catch (e) { apiError.value = errMsg(e) } finally { busy.value = false }
@@ -74,6 +76,16 @@ const steps = ['البرنامج', 'بياناتك', 'المراجعة']
         <h1 class="mt-6 font-display text-[34px]">تم استلام طلب حجزك</h1>
         <p class="mt-3 leading-8 text-brand-700">شكرًا لثقتك بنا. سيتواصل معك فريقنا قريبًا على رقم <b class="num" dir="ltr">{{ normalizePhone(f.phone) }}</b> لتأكيد الحجز وترتيب الدفع.</p>
         <div class="mt-8 rounded-2xl bg-brand-50 p-5"><p class="text-[13px] font-bold text-brand-500">رقم حجزك</p><div class="mt-1 flex items-center justify-center gap-3"><b class="num text-[30px] tracking-wider text-brand-900" dir="ltr">{{ done.reference }}</b><button class="grid size-10 cursor-pointer place-items-center rounded-full bg-white text-brand-600 shadow" :aria-label="copied ? 'تم النسخ' : 'نسخ'" @click="copy"><span :class="copied ? 'i-lucide-check text-emerald-600' : 'i-lucide-copy'" /></button></div><p class="mt-2 text-[13px] text-brand-500">احتفظ به لتتبع حالة حجزك</p></div>
+        <section class="mt-6 rounded-2xl border border-brand-200 p-5 text-start">
+          <p class="font-display text-[21px] text-brand-950">الخطوة التالية</p>
+          <ol class="mt-3 space-y-3 text-[15px] leading-7 text-brand-800">
+            <li class="flex gap-3"><span class="num grid size-6 shrink-0 place-items-center rounded-full bg-brand-900 text-[12px] font-bold text-white">1</span><span>سيتواصل معك فريقنا<template v-if="site.responseTime"> <b>{{ site.responseTime }}</b></template> لتأكيد الحجز.</span></li>
+            <li class="flex gap-3"><span class="num grid size-6 shrink-0 place-items-center rounded-full bg-brand-900 text-[12px] font-bold text-white">2</span><span>أكمل <NuxtLink :to="{ path: '/track', query: { r: done.reference, p: normalizePhone(f.phone) } }" class="font-bold text-brand-600 underline">بيانات المسافرين وصور الجوازات</NuxtLink> لتجهيز التأشيرة.</span></li>
+            <li class="flex gap-3"><span class="num grid size-6 shrink-0 place-items-center rounded-full bg-brand-900 text-[12px] font-bold text-white">3</span><span>بعد التأكيد، ادفع بإحدى الطرق<template v-if="!site.paymentMethods?.length"> التي يحددها الفريق</template>.</span></li>
+          </ol>
+          <ul v-if="site.paymentMethods?.length" class="mt-4 space-y-2 rounded-xl bg-brand-50 p-4 text-[14.5px]"><li v-for="m in site.paymentMethods" :key="m.label" class="flex justify-between gap-3"><b>{{ m.label }}</b><span class="num select-all" dir="ltr">{{ m.details }}</span></li></ul>
+          <p v-if="site.paymentNote" class="mt-3 text-[13px] leading-6 text-brand-500">{{ site.paymentNote }}</p>
+        </section>
         <dl class="mt-6 space-y-3 text-start text-[15px]"><div class="flex justify-between border-b border-brand-100 pb-3"><dt class="text-brand-500">البرنامج</dt><dd class="font-bold">{{ p.title }}</dd></div><div v-if="dep" class="flex justify-between border-b border-brand-100 pb-3"><dt class="text-brand-500">موعد السفر</dt><dd class="font-bold">{{ fdate(dep.date) }}</dd></div><div class="flex justify-between"><dt class="text-brand-500">الإجمالي التقديري</dt><dd class="num font-bold">{{ nf(done.totalPrice) }} ج.م</dd></div></dl>
         <div class="mt-9 grid gap-3 sm:grid-cols-2"><a :href="wa(`السلام عليكم، قدّمت طلب حجز رقم ${done.reference}`)" target="_blank" rel="noopener" class="btn bg-[#25D366] text-white"><span class="i-lucide-message-circle text-lg" />أرسل رقم الحجز واتساب</a><NuxtLink to="/track" class="btn-line">تتبع الحجز</NuxtLink></div>
         <NuxtLink to="/" class="mt-6 inline-block text-[14px] font-bold text-brand-600 hover:text-brand-900">العودة للرئيسية</NuxtLink>

@@ -15,7 +15,7 @@ async function submit() {
   if (f.message.trim().length < 5) errors.message = 'اكتب رسالتك'
   if (Object.keys(errors).length) return
   busy.value = true
-  try { await api('/inquiries', { method: 'POST', body: { name: f.name.trim(), phone: normalizePhone(f.phone), ...(f.subject.trim() ? { subject: f.subject.trim() } : {}), message: f.message.trim() } }); sent.value = true }
+  try { await api('/inquiries', { method: 'POST', body: { name: f.name.trim(), phone: normalizePhone(f.phone), ...(f.subject.trim() ? { subject: f.subject.trim() } : {}), message: f.message.trim() } }); sent.value = true; track('inquiry_submit', { page: 'contact' }) }
   catch (e) { apiError.value = errMsg(e) } finally { busy.value = false }
 }
 const map = computed(() => `https://www.google.com/maps?q=${encodeURIComponent(`مكة للسياحة، ${site.value.address}`)}&hl=ar&z=16&output=embed`)
