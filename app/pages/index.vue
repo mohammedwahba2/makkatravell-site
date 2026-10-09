@@ -56,7 +56,7 @@ const why = [
     <section class="relative isolate overflow-hidden bg-brand-950 text-white">
       <div class="absolute inset-0 -z-10 bg-[radial-gradient(1100px_600px_at_20%_105%,rgb(201_143_104/.45),transparent),radial-gradient(800px_500px_at_85%_-10%,rgb(133_87_59/.5),transparent)]" />
       <div class="absolute inset-0 -z-10 star-pattern opacity-80" />
-      <div class="wrap grid items-center gap-10 pb-24 pt-[128px] lg:min-h-[100svh] lg:grid-cols-[1.08fr_.92fr] lg:gap-6 lg:pb-28 lg:pt-[110px]">
+      <div class="wrap grid grid-cols-[minmax(0,1fr)] items-center gap-10 pb-24 pt-[128px] lg:min-h-[100svh] lg:grid-cols-[1.08fr_.92fr] [&>*]:min-w-0 lg:gap-6 lg:pb-28 lg:pt-[110px]">
         <div>
           <!-- <p class="hero-eyebrow eyebrow !text-brand-300"><span class="h-px w-10 bg-current opacity-60" />مكة للسياحة · دمياط</p> -->
           <h1 class="mt-5 font-display text-[40px] font-semibold leading-[1.28] sm:text-[56px] lg:text-[60px] xl:text-[60px]">
