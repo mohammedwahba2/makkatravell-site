@@ -8,7 +8,7 @@ const nav = [
 const darkHero = computed(() => ['/', '/umrah', '/hajj'].includes(route.path))
 const scrolled = ref(false)
 const hidden = ref(false)
-const open = ref(false)
+const open = useState<boolean>('menu-open', () => false)
 let last = 0
 onMounted(() => {
   const on = () => {
@@ -57,7 +57,7 @@ const active = (to: string) => (to === '/' ? route.path === '/' : route.path.sta
 
   <!-- mobile menu -->
   <Transition enter-active-class="transition duration-500 ease-out" enter-from-class="opacity-0 -translate-y-4" leave-active-class="transition duration-300" leave-to-class="opacity-0 -translate-y-2">
-    <div v-if="open" class="fixed inset-0 z-40 overflow-y-auto bg-brand-950 pt-[92px] lg:hidden star-pattern">
+    <div v-if="open" class="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-brand-950 pb-12 pt-[92px] lg:hidden star-pattern">
       <nav class="wrap flex flex-col py-6" aria-label="القائمة">
         <NuxtLink v-for="(n, i) in nav" :key="n.to" :to="n.to" class="flex items-center justify-between border-b border-white/10 py-4 font-display text-[28px] text-brand-100" :style="{ animation: `rise .6s ${i * 0.05}s both cubic-bezier(.2,.8,.2,1)` }" :class="active(n.to) ? '!text-brand-300' : ''">
           {{ n.label }}<span class="i-lucide-arrow-up-left text-brand-400" />
