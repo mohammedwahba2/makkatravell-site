@@ -23,7 +23,7 @@ const remaining = computed(() => (res.value ? Math.max(0, Number(res.value.total
 <template>
   <div class="min-h-[80vh] pb-28 pt-[120px] sm:pt-[150px]">
     <div class="wrap max-w-[780px]">
-      <p class="eyebrow justify-center"><span class="h-px w-8 bg-current opacity-60" />تتبع الحجز<span class="h-px w-8 bg-current opacity-60" /></p>
+      <!-- <p class="eyebrow justify-center"><span class="h-px w-8 bg-current opacity-60" />تتبع الحجز<span class="h-px w-8 bg-current opacity-60" /></p> -->
       <h1 class="h-display mt-3 text-center text-[38px] sm:text-[52px]">أين وصل حجزك؟</h1>
       <form class="mx-auto mt-10 grid gap-4 rounded-[26px] bg-white p-6 shadow-[0_30px_70px_-40px_rgb(59_36_24/.45)] sm:grid-cols-2 sm:p-8" @submit.prevent="submit">
         <div><label class="label" for="r">رقم الحجز</label><input id="r" v-model="f.reference" class="input num uppercase" dir="ltr" placeholder="MK-XXXXXXX" required /></div>

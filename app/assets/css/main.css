@@ -49,7 +49,7 @@ html.rv-fallback .rv, html.rv-fallback .rv-x, html.rv-fallback .rv-s { opacity: 
 @keyframes intro-line { from { transform: translate3d(0, 118%, 0); } to { transform: none; } }
 @keyframes intro-scene { from { opacity: 0; transform: translate3d(0, 38px, 0) scale(.93); } to { opacity: 1; transform: none; } }
 @keyframes intro-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
-.hero-eyebrow { animation: intro-up .8s cubic-bezier(.2,.8,.2,1) both; }
+/* .hero-eyebrow { animation: intro-up .8s cubic-bezier(.2,.8,.2,1) both; } */
 .hero-line { animation: intro-line 1.05s cubic-bezier(.16,1,.3,1) .08s both; }
 .hero-line-2 { animation-delay: .22s; }
 .hero-sub { animation: intro-up .9s cubic-bezier(.2,.8,.2,1) .35s both; }

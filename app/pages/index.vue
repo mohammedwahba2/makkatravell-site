@@ -58,7 +58,7 @@ const why = [
       <div class="absolute inset-0 -z-10 star-pattern opacity-80" />
       <div class="wrap grid items-center gap-10 pb-24 pt-[128px] lg:min-h-[100svh] lg:grid-cols-[1.08fr_.92fr] lg:gap-6 lg:pb-28 lg:pt-[110px]">
         <div>
-          <p class="hero-eyebrow eyebrow !text-brand-300"><span class="h-px w-10 bg-current opacity-60" />مكة للسياحة · دمياط</p>
+          <!-- <p class="hero-eyebrow eyebrow !text-brand-300"><span class="h-px w-10 bg-current opacity-60" />مكة للسياحة · دمياط</p> -->
           <h1 class="mt-5 font-display text-[40px] font-semibold leading-[1.28] sm:text-[56px] lg:text-[60px] xl:text-[60px]">
             <span class="block overflow-hidden py-1"><span class="hero-line block">ركّز في عمرتك،</span></span>
             <span class="block overflow-hidden py-1"><span class="hero-line hero-line-2 block bg-gradient-to-l from-gold-300 via-brand-300 to-brand-400 bg-clip-text text-transparent">واترك لنا شرف خدمتك.</span></span>
