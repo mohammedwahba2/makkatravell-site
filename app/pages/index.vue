@@ -48,38 +48,20 @@ const why = [
   { i: 'i-lucide-file-check-2', t: 'تجهيز الأوراق', d: 'نساعدك في المستندات المطلوبة وإجراءات التأشيرة من أول خطوة.' },
   { i: 'i-lucide-headset', t: 'متابعة مستمرة', d: 'فريق يرد عليك عبر الهاتف وواتساب قبل السفر وأثناء الرحلة.' },
 ]
-
-// hero intro animation
-const hero = ref<HTMLElement>()
-onMounted(async () => {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-  const { default: gsap } = await import('gsap')
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
-    tl.from('.hero-eyebrow', { y: 20, opacity: 0, duration: 0.8 })
-      .from('.hero-line', { yPercent: 115, duration: 1.15, stagger: 0.14 }, '-=0.5')
-      .from('.hero-sub', { y: 24, opacity: 0, duration: 0.9 }, '-=0.7')
-      .from('.hero-cta', { y: 24, opacity: 0, duration: 0.9 }, '-=0.65')
-      .from('.hero-search', { y: 40, opacity: 0, duration: 1 }, '-=0.6')
-      .from('.hero-scene', { scale: 0.9, opacity: 0, y: 40, duration: 1.5, ease: 'expo.out' }, 0.15)
-      .from('.hero-chip', { scale: 0.6, opacity: 0, duration: 0.8, stagger: 0.14, ease: 'back.out(1.8)' }, '-=0.8')
-  }, hero.value)
-  onBeforeUnmount(() => ctx.revert())
-})
 </script>
 
 <template>
   <div>
     <!-- HERO -->
-    <section ref="hero" class="relative isolate overflow-hidden bg-brand-950 text-white">
+    <section class="relative isolate overflow-hidden bg-brand-950 text-white">
       <div class="absolute inset-0 -z-10 bg-[radial-gradient(1100px_600px_at_20%_105%,rgb(201_143_104/.45),transparent),radial-gradient(800px_500px_at_85%_-10%,rgb(133_87_59/.5),transparent)]" />
       <div class="absolute inset-0 -z-10 star-pattern opacity-80" />
       <div class="wrap grid items-center gap-10 pb-24 pt-[128px] lg:min-h-[100svh] lg:grid-cols-[1.08fr_.92fr] lg:gap-6 lg:pb-28 lg:pt-[110px]">
         <div>
           <p class="hero-eyebrow eyebrow !text-brand-300"><span class="h-px w-10 bg-current opacity-60" />مكة للسياحة · دمياط</p>
-          <h1 class="mt-5 font-display text-[40px] font-semibold leading-[1.28] sm:text-[56px] lg:text-[60px] xl:text-[68px]">
+          <h1 class="mt-5 font-display text-[40px] font-semibold leading-[1.28] sm:text-[56px] lg:text-[60px] xl:text-[60px]">
             <span class="block overflow-hidden py-1"><span class="hero-line block">ركّز في عمرتك،</span></span>
-            <span class="block overflow-hidden py-1"><span class="hero-line block bg-gradient-to-l from-gold-300 via-brand-300 to-brand-400 bg-clip-text text-transparent">واترك لنا شرف خدمتك.</span></span>
+            <span class="block overflow-hidden py-1"><span class="hero-line hero-line-2 block bg-gradient-to-l from-gold-300 via-brand-300 to-brand-400 bg-clip-text text-transparent">واترك لنا شرف خدمتك.</span></span>
           </h1>
           <p class="hero-sub mt-6 max-w-xl text-[18px] leading-9 text-brand-200 sm:text-[19px]">برامج عمرة وحج من القاهرة وجميع المحافظات، بإشراف ديني وإقامة مختارة قريبة من الحرم، وتأشيرة وطيران ومواصلات في رحلة واحدة منظّمة.</p>
           <div class="hero-cta mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>*]:w-full sm:[&>*]:w-auto">
@@ -101,8 +83,8 @@ onMounted(async () => {
 
         <div class="relative mx-auto w-full max-w-[460px] lg:max-w-[500px]">
           <div class="hero-scene relative aspect-[480/620] w-full drop-shadow-[0_40px_80px_rgba(0,0,0,.5)]"><HeroScene /></div>
-          <div class="hero-chip drift absolute -start-3 top-[18%] flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 text-brand-900 shadow-2xl sm:-start-10"><span class="grid size-9 place-items-center rounded-xl bg-brand-100 text-brand-600"><span class="i-lucide-book-open-check text-lg" /></span><span class="text-[13px] font-bold leading-tight">مرشد ديني<br /><span class="font-medium text-brand-500">يرافقك طوال الرحلة</span></span></div>
-          <div class="hero-chip drift absolute -end-3 bottom-[22%] flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 text-brand-900 shadow-2xl [animation-delay:-3s] sm:-end-8"><span class="grid size-9 place-items-center rounded-xl bg-brand-100 text-brand-600"><span class="i-lucide-hotel text-lg" /></span><span class="text-[13px] font-bold leading-tight">إقامة مختارة<br /><span class="font-medium text-brand-500">قريبة من الحرم</span></span></div>
+          <div class="hero-chip absolute -start-3 top-[18%] sm:-start-10"><div class="drift flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 text-brand-900 shadow-2xl"><span class="grid size-9 place-items-center rounded-xl bg-brand-100 text-brand-600"><span class="i-lucide-book-open-check text-lg" /></span><span class="text-[13px] font-bold leading-tight">مرشد ديني<br /><span class="font-medium text-brand-500">يرافقك طوال الرحلة</span></span></div></div>
+          <div class="hero-chip absolute -end-3 bottom-[22%] [animation-delay:1.2s] sm:-end-8"><div class="drift flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 text-brand-900 shadow-2xl [animation-delay:-3s]"><span class="grid size-9 place-items-center rounded-xl bg-brand-100 text-brand-600"><span class="i-lucide-hotel text-lg" /></span><span class="text-[13px] font-bold leading-tight">إقامة مختارة<br /><span class="font-medium text-brand-500">قريبة من الحرم</span></span></div></div>
         </div>
       </div>
       <div class="absolute inset-x-0 bottom-0 h-10 rounded-t-[44px] bg-brand-50 sm:h-14 sm:rounded-t-[64px]" />

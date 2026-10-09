@@ -43,3 +43,17 @@ html.rv-fallback .rv, html.rv-fallback .rv-x, html.rv-fallback .rv-s { opacity: 
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   html.js .rv, html.js .rv-x, html.js .rv-s { opacity: 1; transform: none; }
 }
+
+/* ---- hero intro: pure CSS so text paints immediately (no JS dependency, best LCP) ---- */
+@keyframes intro-up { from { opacity: 0; transform: translate3d(0, 26px, 0); } to { opacity: 1; transform: none; } }
+@keyframes intro-line { from { transform: translate3d(0, 118%, 0); } to { transform: none; } }
+@keyframes intro-scene { from { opacity: 0; transform: translate3d(0, 38px, 0) scale(.93); } to { opacity: 1; transform: none; } }
+@keyframes intro-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+.hero-eyebrow { animation: intro-up .8s cubic-bezier(.2,.8,.2,1) both; }
+.hero-line { animation: intro-line 1.05s cubic-bezier(.16,1,.3,1) .08s both; }
+.hero-line-2 { animation-delay: .22s; }
+.hero-sub { animation: intro-up .9s cubic-bezier(.2,.8,.2,1) .35s both; }
+.hero-cta { animation: intro-up .9s cubic-bezier(.2,.8,.2,1) .5s both; }
+.hero-search { animation: intro-up 1s cubic-bezier(.2,.8,.2,1) .65s both; }
+.hero-scene { animation: intro-scene 1.3s cubic-bezier(.16,1,.3,1) .1s both; }
+.hero-chip { animation: intro-pop .8s cubic-bezier(.34,1.56,.64,1) 1s both; }
