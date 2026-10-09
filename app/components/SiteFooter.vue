@@ -41,6 +41,7 @@ const year = new Date().getFullYear()
         <p>© <span class="num">{{ year }}</span> مكة للسياحة — دمياط. جميع الحقوق محفوظة.<span v-if="site.licenseNumber" class="mx-2 text-brand-400">·</span><span v-if="site.licenseNumber">{{ site.licenseAuthority || 'رقم الترخيص' }}: <b class="num text-brand-100">{{ site.licenseNumber }}</b></span></p>
         <div class="flex flex-wrap justify-center gap-x-5 gap-y-2"><NuxtLink to="/privacy" class="hover:text-white">سياسة الخصوصية</NuxtLink><NuxtLink to="/terms" class="hover:text-white">الشروط والأحكام</NuxtLink><NuxtLink to="/refund" class="hover:text-white">الإلغاء والاسترداد</NuxtLink></div>
       </div>
+      <p class="wrap pb-6 text-center text-[13px] text-brand-300">صُنع بـ <span class="i-lucide-heart inline-block align-[-2px] text-red-400" style="fill:currentColor" aria-label="حب" /> بواسطة <a href="https://mohamed-wahba-cv.vercel.app/" target="_blank" rel="noopener" class="font-bold text-brand-100 transition hover:text-white" dir="ltr">Mohamed wahba</a></p>
     </div>
   </footer>
 </template>
