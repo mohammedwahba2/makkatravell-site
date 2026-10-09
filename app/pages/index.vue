@@ -132,7 +132,7 @@ const why = [
       <ol class="relative mt-16 grid gap-6 md:grid-cols-4">
         <div class="pointer-events-none absolute inset-x-[12%] top-[34px] hidden border-t border-dashed border-brand-300 md:block" />
         <li v-for="(s, i) in steps" :key="s.t" class="rv relative text-center">
-          <div class="relative z-10 mx-auto grid size-[68px] place-items-center rounded-full bg-brand-900 text-brand-50 shadow-[0_14px_30px_-10px_rgb(59_36_24/.6)]"><span :class="s.i" class="text-[28px]" /><span class="num absolute -end-1 -top-1 grid size-7 place-items-center rounded-full bg-brand-400 text-[13px] font-bold text-brand-950">{{ i + 1 }}</span></div>
+          <div class="relative z-10 mx-auto grid size-[68px] place-items-center rounded-full bg-brand-900 text-brand-50 shadow-[0_14px_30px_-10px_rgb(59_36_24/.6)]"><span :class="s.i" class="text-[28px]" /><span class="num absolute -end-1.5 -top-1.5 grid size-7 place-items-center rounded-full bg-brand-400 text-[13px] font-bold text-brand-950 ring-4 ring-brand-50">{{ i + 1 }}</span></div>
           <h3 class="mt-6 font-display text-[22px] text-brand-950">{{ s.t }}</h3>
           <p class="mx-auto mt-2 max-w-[260px] text-[15px] leading-7 text-brand-700/90">{{ s.d }}</p>
         </li>
